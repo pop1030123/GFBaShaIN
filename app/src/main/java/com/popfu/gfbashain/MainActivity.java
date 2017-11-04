@@ -63,6 +63,23 @@ public class MainActivity extends FragmentActivity {
         updateTabState(tabImages.get(0)) ;
         mViewPager.setPageTransformer(false ,new SimplePageTransform());
 
+
+        mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                updateTabState(tabImages.get(position));
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
         // 设置viewPager切换的动画时长
         try {
             //设置滚动切换的动画时间
