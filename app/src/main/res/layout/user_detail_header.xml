@@ -13,23 +13,19 @@
         android:layout_height="wrap_content"
         android:layout_marginRight="50.0px">
 
-        <com.mikhaellopez.circularimageview.CircularImageView
+        <de.hdodenhof.circleimageview.CircleImageView
             android:id="@id/iv_avatar"
             android:layout_width="145.0px"
             android:layout_height="145.0px"
             android:layout_centerHorizontal="true"
             android:src="@drawable/demo_head"
-            app:civ_border_color="#0000"
-            app:civ_border_width="5dp"
-            app:civ_shadow="false"
-            app:civ_shadow_radius="0"
-            app:civ_shadow_color="#8BC34A"/>
+            app:civ_border_width="3dp"
+            app:civ_border_color="#0000"/>
 
         <ImageView
             android:id="@id/iv_isVip"
             android:layout_width="155.0px"
             android:layout_height="155.0px"
-            android:layout_gravity="center"
             android:src="@mipmap/icon_vip"/>
     </com.zhy.autolayout.AutoRelativeLayout>
 
