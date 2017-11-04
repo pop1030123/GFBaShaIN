@@ -16,12 +16,16 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="aaaaaaa"
-        android:textColor="@color/black"/>
+        android:padding="5dp"
+        android:textSize="16sp"
+        android:textColor="@color/button_material_dark"/>
 
     <TextView
         android:id="@id/tv_remark"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textSize="12sp"
+        android:padding="5dp"
         android:text="bbbbbb"
-        android:textColor="@color/black"/>
+        android:textColor="@color/button_material_light"/>
 </LinearLayout>

@@ -12,7 +12,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.popfu.gfbashain.L;
 import com.popfu.gfbashain.R;
+import com.viewpagerindicator.TabPageIndicator;
+import com.viewpagerindicator.TitlePageIndicator;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.EFragment;
@@ -28,6 +31,8 @@ import java.util.List;
 public class ArticlePicGroupFragment extends Fragment {
 
 
+    @ViewById(R.id.pageIndicator)
+    TabPageIndicator mPageIndicator ;
 
     @ViewById(R.id.viewPager)
     ViewPager mViewPager ;
@@ -68,20 +73,21 @@ public class ArticlePicGroupFragment extends Fragment {
     @AfterViews
     public void afterViews(){
         mViewPager.setAdapter(myPagerAdapter);
-
+        mPageIndicator.setViewPager(mViewPager);
     }
 
-
+    private static String[] pages = {"推荐" ,"明星" ,"潮流" ,"美容" ,"生活" ,"视频" ,"直播"} ;
     class MyPagerAdapter extends FragmentPagerAdapter {
         FragmentManager fm;
-
         List<ArticleFragment_> fragmentList ;
 
         public MyPagerAdapter(FragmentManager fm) {
             super(fm);
             this.fm = fm ;
             fragmentList = new ArrayList<ArticleFragment_>() ;
-            fragmentList.add(new ArticleFragment_()) ;
+            for (String page :pages){
+                fragmentList.add(ArticleFragment.newInstance(page)) ;
+            }
         }
 
         @Override
@@ -92,6 +98,11 @@ public class ArticlePicGroupFragment extends Fragment {
         @Override
         public int getCount() {
             return fragmentList.size();
+        }
+
+        @Override
+        public CharSequence getPageTitle(int position) {
+            return pages[position];
         }
     }
 }

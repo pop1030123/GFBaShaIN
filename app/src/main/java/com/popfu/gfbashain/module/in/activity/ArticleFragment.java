@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.popfu.gfbashain.L;
 import com.popfu.gfbashain.R;
 import com.popfu.gfbashain.module.in.presenter.ArticlePresenter;
 
@@ -31,12 +32,31 @@ public class ArticleFragment extends Fragment {
     private ArticleAdapter adapter;
     private Context mContext;
 
+    private String pageTitle ;
+
+    public static  ArticleFragment_ newInstance(String pageTitle){
+        ArticleFragment_ instance = new ArticleFragment_();
+        Bundle bundle = new Bundle();
+        bundle.putString("title", pageTitle);
+        //fragment保存参数，传入一个Bundle对象
+        instance.setArguments(bundle);
+        return instance;
+    }
+
+    public String getPageTitle(){
+        return pageTitle ;
+    }
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_article, container, false);
+        L.d("onCreateView");
         presenter = new ArticlePresenter();
+        if(getArguments()!=null){
+            //取出保存的值
+           pageTitle = getArguments().getString("title");
+        }
         return view;
     }
 
@@ -56,7 +76,7 @@ public class ArticleFragment extends Fragment {
     public void onAttach(Context context) {
         super.onAttach(context);
         mContext = context;
-
+        L.d("onAttach");
     }
 
     @AfterViews

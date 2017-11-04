@@ -4,7 +4,9 @@
                                      android:layout_width="fill_parent"
                                      android:layout_height="fill_parent"
                                      android:background="@color/white"
-                                     android:orientation="vertical">
+                                     android:orientation="vertical"
+                                     xmlns:app="http://schemas.android.com/apk/res-auto">
+
     <com.zhy.autolayout.AutoRelativeLayout
         android:id="@id/view_stub_title_content"
         android:layout_width="fill_parent"
@@ -68,6 +70,12 @@
             android:layout_alignParentBottom="true"
             android:background="@color/divider_color"/>
     </com.zhy.autolayout.AutoRelativeLayout>
+
+    <com.viewpagerindicator.TabPageIndicator
+        android:id="@+id/pageIndicator"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"/>
 
     <android.support.v4.view.ViewPager
         android:id="@id/viewPager"
