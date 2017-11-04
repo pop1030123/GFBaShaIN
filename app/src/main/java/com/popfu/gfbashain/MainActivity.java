@@ -10,6 +10,7 @@ import android.view.animation.DecelerateInterpolator;
 import android.widget.ImageView;
 
 import com.popfu.gfbashain.module.in.activity.ArticlePicGroupFragment_;
+import com.popfu.gfbashain.module.me.activity.MeFragment_;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Click;
@@ -34,7 +35,7 @@ public class MainActivity extends FragmentActivity {
     ArticlePicGroupFragment_ moduleInFragment;
     ArticlePicGroupFragment_ moduleShaiFragment;
     ArticlePicGroupFragment_ moduleBuyFragment;
-    ArticlePicGroupFragment_ moduleMeFragment;
+    MeFragment_ moduleMeFragment;
 
     Fragment[] modules ;
 
@@ -49,7 +50,7 @@ public class MainActivity extends FragmentActivity {
         moduleInFragment = new ArticlePicGroupFragment_() ;
         moduleShaiFragment = new ArticlePicGroupFragment_() ;
         moduleBuyFragment = new ArticlePicGroupFragment_() ;
-        moduleMeFragment = new ArticlePicGroupFragment_() ;
+        moduleMeFragment = new MeFragment_() ;
         modules = new Fragment[]{moduleInFragment ,moduleShaiFragment ,moduleBuyFragment ,moduleMeFragment} ;
 
     }
