@@ -7,6 +7,9 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
+import android.view.animation.AccelerateInterpolator;
+import android.view.animation.DecelerateInterpolator;
+import android.view.animation.LinearInterpolator;
 import android.widget.ImageView;
 
 import com.popfu.gfbashain.module.in.activity.ArticlePicGroupFragment;
@@ -18,6 +21,7 @@ import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.ViewById;
 import org.androidannotations.annotations.ViewsById;
 
+import java.lang.reflect.Field;
 import java.util.List;
 
 
@@ -61,34 +65,48 @@ public class MainActivity extends FragmentActivity {
         mViewPager.setAdapter(mainPagerAdapter);
         // 因为默认显示是第一个页面，所以第一个按钮的状态变为选中状态
         updateTabState(tabImages.get(0)) ;
+        mViewPager.setPageTransformer(false ,new SimplePageTransform());
+
+
+        try {
+            //设置滚动切换的动画时间
+            Field field = ViewPager.class.getDeclaredField("mScroller");
+            field.setAccessible(true);
+            FixedSpeedScroller scroller = new FixedSpeedScroller(this,
+                    new DecelerateInterpolator());
+            field.set(mViewPager, scroller);
+            scroller.setmDuration(350);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
     }
 
     @Click(R.id.iv_tab_in)
     public void clickModuleIn(ImageView imageView){
         L.d("click0:"+imageView);
-        mViewPager.setCurrentItem(0);
+        mViewPager.setCurrentItem(0 ,true);
         updateTabState(imageView) ;
     }
 
     @Click(R.id.iv_tab_shai)
     public void clickModuleShai(ImageView imageView){
         L.d("click1:"+imageView);
-        mViewPager.setCurrentItem(1);
+        mViewPager.setCurrentItem(1,true);
         updateTabState(imageView) ;
     }
 
     @Click(R.id.iv_tab_buy)
     public void clickModuleBuy(ImageView imageView){
         L.d("click2:"+imageView);
-        mViewPager.setCurrentItem(2);
+        mViewPager.setCurrentItem(2,true);
         updateTabState(imageView) ;
     }
 
     @Click(R.id.iv_tab_me)
     public void clickModuleMe(ImageView imageView){
         L.d("click3:"+imageView);
-        mViewPager.setCurrentItem(3);
+        mViewPager.setCurrentItem(3,true);
         updateTabState(imageView) ;
     }
 
