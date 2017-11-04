@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoLinearLayout android:id="@id/activity_article_pic_group"
+                                     xmlns:android="http://schemas.android.com/apk/res/android"
+                                     android:layout_width="fill_parent"
+                                     android:layout_height="fill_parent"
+                                     android:background="@color/black"
+                                     android:orientation="vertical">
+
+    <TextView
+        android:id="@id/tv_index"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="right"
+        android:padding="10.0dip"
+        android:textColor="@color/txt_white"/>
+
+    <android.support.v4.view.ViewPager
+        android:id="@id/viewPager"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"/>
+</com.zhy.autolayout.AutoLinearLayout>

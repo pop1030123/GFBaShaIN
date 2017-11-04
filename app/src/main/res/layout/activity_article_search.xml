@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoFrameLayout android:id="@id/activity_article_search"
+                                    xmlns:android="http://schemas.android.com/apk/res/android"
+                                    android:layout_width="fill_parent"
+                                    android:layout_height="fill_parent">
+
+    <com.aspsine.swipetoloadlayout.SwipeToLoadLayout
+        android:id="@id/swipeToLoadLayout"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+
+        <include
+            android:id="@id/swipe_refresh_header"
+            layout="@layout/layout_refresh_header"/>
+
+        <com.zhy.autolayout.AutoLinearLayout
+            android:id="@id/swipe_target"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="vertical">
+
+            <com.zhy.autolayout.AutoLinearLayout
+                android:id="@id/ll_tag"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:orientation="vertical">
+
+                <com.zhy.autolayout.AutoLinearLayout
+                    android:id="@id/ll_history"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:background="#fff7f7f7"
+                        android:padding="10.0px"
+                        android:text="历史搜索"/>
+
+                    <com.kwan.base.widget.observablescrollview.ObservableRecyclerView
+                        android:id="@id/rl_history"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"/>
+                </com.zhy.autolayout.AutoLinearLayout>
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#fff7f7f7"
+                    android:padding="10.0px"
+                    android:text="热门标签"/>
+
+                <com.kwan.base.widget.observablescrollview.ObservableRecyclerView
+                    android:id="@id/rl_hot"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"/>
+            </com.zhy.autolayout.AutoLinearLayout>
+
+            <com.kwan.base.widget.observablescrollview.ObservableRecyclerView
+                android:id="@id/rl_article"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"/>
+        </com.zhy.autolayout.AutoLinearLayout>
+
+        <include
+            android:id="@id/swipe_load_more_footer"
+            layout="@layout/layout_loadmore_footer"/>
+    </com.aspsine.swipetoloadlayout.SwipeToLoadLayout>
+</com.zhy.autolayout.AutoFrameLayout>
