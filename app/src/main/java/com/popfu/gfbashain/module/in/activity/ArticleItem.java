@@ -7,13 +7,13 @@ package com.popfu.gfbashain.module.in.activity;
 public class ArticleItem {
 
 
-    public ArticleItem(String title, String pic) {
+    public ArticleItem(String title, int picRes) {
         this.title = title;
-        this.pic = pic;
+        this.picRes = picRes;
     }
 
     private String title ;
-    private String pic ;
+    private int picRes ;
 
 
     public String getTitle() {
@@ -24,15 +24,12 @@ public class ArticleItem {
         this.title = title;
     }
 
-    public String getPic() {
-        return pic;
+
+    public int getPicRes() {
+        return picRes;
     }
 
-    public void setPic(String pic) {
-        this.pic = pic;
-    }
-
-    public int getImageResource(){
-        return 0 ;
+    public void setPicRes(int picRes) {
+        this.picRes = picRes;
     }
 }

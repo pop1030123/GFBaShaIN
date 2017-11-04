@@ -10,6 +10,7 @@ import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.popfu.gfbashain.R;
 
@@ -30,6 +31,9 @@ public class ArticlePicGroupFragment extends Fragment {
 
     @ViewById(R.id.viewPager)
     ViewPager mViewPager ;
+
+    @ViewById(R.id.tv_title)
+    TextView mTitle ;
 
     private MyPagerAdapter myPagerAdapter ;
     private Context mContext;

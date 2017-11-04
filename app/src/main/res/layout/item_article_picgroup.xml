@@ -1,39 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.zhy.autolayout.AutoFrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                                    android:layout_width="fill_parent"
-                                    android:layout_height="fill_parent">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="300dp"
+              android:orientation="vertical">
 
     <ImageView
         android:id="@id/iv_icon"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:layout_marginBottom="@dimen/title_bar_height"
-        android:layout_marginTop="30.0px"/>
+        android:layout_width="wrap_content"
+        android:layout_height="220dp"
+        android:src="@drawable/demo_1"
+        android:scaleType="fitXY"/>
 
-    <android.support.v4.widget.NestedScrollView
-        android:id="@id/scrollView"
-        android:layout_width="fill_parent"
-        android:layout_height="300.0px"
-        android:layout_gravity="bottom"
-        android:fadingEdge="none"
-        android:overScrollMode="never">
+    <TextView
+        android:id="@id/tv_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="aaaaaaa"
+        android:textColor="@color/black"/>
 
-        <com.zhy.autolayout.AutoLinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <View
-                android:id="@id/divider"
-                android:layout_width="fill_parent"
-                android:layout_height="300.0px"/>
-
-            <TextView
-                android:id="@id/tv_remark"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/image_overlay2"
-                android:textColor="@color/txt_white"/>
-        </com.zhy.autolayout.AutoLinearLayout>
-    </android.support.v4.widget.NestedScrollView>
-</com.zhy.autolayout.AutoFrameLayout>
+    <TextView
+        android:id="@id/tv_remark"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="bbbbbb"
+        android:textColor="@color/black"/>
+</LinearLayout>
