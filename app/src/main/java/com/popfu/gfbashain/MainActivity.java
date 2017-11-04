@@ -6,13 +6,9 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.util.Log;
-import android.view.animation.AccelerateInterpolator;
 import android.view.animation.DecelerateInterpolator;
-import android.view.animation.LinearInterpolator;
 import android.widget.ImageView;
 
-import com.popfu.gfbashain.module.in.activity.ArticlePicGroupFragment;
 import com.popfu.gfbashain.module.in.activity.ArticlePicGroupFragment_;
 
 import org.androidannotations.annotations.AfterViews;
@@ -67,7 +63,7 @@ public class MainActivity extends FragmentActivity {
         updateTabState(tabImages.get(0)) ;
         mViewPager.setPageTransformer(false ,new SimplePageTransform());
 
-
+        // 设置viewPager切换的动画时长
         try {
             //设置滚动切换的动画时间
             Field field = ViewPager.class.getDeclaredField("mScroller");
@@ -84,13 +80,21 @@ public class MainActivity extends FragmentActivity {
 
     @Click(R.id.iv_tab_in)
     public void clickModuleIn(ImageView imageView){
-        L.d("click0:"+imageView);
+        int current = mViewPager.getCurrentItem() ;
+        L.d("click0:"+imageView+":current:"+current);
+        if(Math.abs(0 -current) > 1){
+            mViewPager.setCurrentItem(1,false);
+        }
         mViewPager.setCurrentItem(0 ,true);
         updateTabState(imageView) ;
     }
 
     @Click(R.id.iv_tab_shai)
     public void clickModuleShai(ImageView imageView){
+        int current = mViewPager.getCurrentItem() ;
+        if(Math.abs(1 - current) > 1){
+            mViewPager.setCurrentItem(2,false);
+        }
         L.d("click1:"+imageView);
         mViewPager.setCurrentItem(1,true);
         updateTabState(imageView) ;
@@ -98,6 +102,10 @@ public class MainActivity extends FragmentActivity {
 
     @Click(R.id.iv_tab_buy)
     public void clickModuleBuy(ImageView imageView){
+        int current = mViewPager.getCurrentItem() ;
+        if(Math.abs(2 - current) > 1){
+            mViewPager.setCurrentItem(1,false);
+        }
         L.d("click2:"+imageView);
         mViewPager.setCurrentItem(2,true);
         updateTabState(imageView) ;
@@ -105,7 +113,11 @@ public class MainActivity extends FragmentActivity {
 
     @Click(R.id.iv_tab_me)
     public void clickModuleMe(ImageView imageView){
-        L.d("click3:"+imageView);
+        int current = mViewPager.getCurrentItem() ;
+        if(Math.abs(3 - current) > 1){
+            mViewPager.setCurrentItem(2,false);
+        }
+        L.d("click3:"+imageView+":current:"+current);
         mViewPager.setCurrentItem(3,true);
         updateTabState(imageView) ;
     }
