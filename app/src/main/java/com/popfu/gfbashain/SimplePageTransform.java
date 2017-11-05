@@ -19,6 +19,6 @@ public class SimplePageTransform implements ViewPager.PageTransformer {
         //设置x轴的锚点
         view.setPivotX(pivotX);
         //设置绕Y轴旋转的角度
-        view.setRotationY(30f * position);
+        view.setRotationY(25f * position);
     }
 }

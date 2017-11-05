@@ -11,6 +11,7 @@ import android.widget.ImageView;
 
 import com.popfu.gfbashain.module.in.activity.ArticlePicGroupFragment_;
 import com.popfu.gfbashain.module.me.activity.MeFragment_;
+import com.popfu.gfbashain.module.shai.ShaiFragment_;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Click;
@@ -33,7 +34,7 @@ public class MainActivity extends FragmentActivity {
     List<ImageView> tabImages ;
 
     ArticlePicGroupFragment_ moduleInFragment;
-    ArticlePicGroupFragment_ moduleShaiFragment;
+    ShaiFragment_ moduleShaiFragment;
     ArticlePicGroupFragment_ moduleBuyFragment;
     MeFragment_ moduleMeFragment;
 
@@ -48,7 +49,7 @@ public class MainActivity extends FragmentActivity {
         mainPagerAdapter = new MainPagerAdapter(getSupportFragmentManager()) ;
 
         moduleInFragment = new ArticlePicGroupFragment_() ;
-        moduleShaiFragment = new ArticlePicGroupFragment_() ;
+        moduleShaiFragment = new ShaiFragment_() ;
         moduleBuyFragment = new ArticlePicGroupFragment_() ;
         moduleMeFragment = new MeFragment_() ;
         modules = new Fragment[]{moduleInFragment ,moduleShaiFragment ,moduleBuyFragment ,moduleMeFragment} ;

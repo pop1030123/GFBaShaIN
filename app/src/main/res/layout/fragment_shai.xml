@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoLinearLayout android:id="@id/activity_article_pic_group"
+                                     xmlns:android="http://schemas.android.com/apk/res/android"
+                                     android:layout_width="fill_parent"
+                                     android:layout_height="fill_parent"
+                                     android:background="@color/white"
+                                     android:orientation="vertical"
+                                     xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.zhy.autolayout.AutoRelativeLayout
+        android:id="@id/view_stub_title_content"
+        android:layout_width="fill_parent"
+        android:layout_height="93.0px"
+        android:background="@color/txt_white">
+
+        <ImageView
+            android:id="@id/iv_title_search"
+            android:layout_width="50.0px"
+            android:layout_height="50.0px"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="15.0dip"
+            android:src="@mipmap/title_search_icon"/>
+
+        <com.zhy.autolayout.AutoFrameLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="300.0px">
+
+            <com.kwan.base.widget.SlidingTabLayout
+                android:id="@id/stl_shai_tabs"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@color/txt_white"/>
+        </com.zhy.autolayout.AutoFrameLayout>
+
+        <ImageView
+            android:id="@id/iv_title_chat"
+            android:layout_width="50.0px"
+            android:layout_height="50.0px"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_margin="5.0dip"
+            android:src="@mipmap/article_comment_normal_icon"/>
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1.0px"
+            android:layout_alignParentBottom="true"
+            android:background="@color/divider_color"/>
+    </com.zhy.autolayout.AutoRelativeLayout>
+    <android.support.v4.view.ViewPager
+        android:id="@id/viewPager"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"/>
+</com.zhy.autolayout.AutoLinearLayout>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoLinearLayout android:id="@id/activity_article_pic_group"
+                                     xmlns:android="http://schemas.android.com/apk/res/android"
+                                     android:layout_width="fill_parent"
+                                     android:layout_height="fill_parent"
+                                     android:background="@color/white"
+                                     android:orientation="vertical"
+                                     xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.viewpagerindicator.TabPageIndicator
+        android:id="@+id/pageIndicator"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"/>
+
+    <com.bigkoo.convenientbanner.ConvenientBanner
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/convenientBanner"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        app:canLoop="true"
+    />
+
+    <android.support.v4.view.ViewPager
+        android:id="@id/viewPager"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"/>
+</com.zhy.autolayout.AutoLinearLayout>
