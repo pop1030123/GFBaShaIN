@@ -3,9 +3,15 @@
               android:layout_width="match_parent"
               android:layout_height="match_parent">
 
-
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/article_recyclerView"
+    <com.popfu.superswiperefreshlayout.SuperSwipeRefreshLayout
+        android:id="@+id/swipe_refresh"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/article_recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+    </com.popfu.superswiperefreshlayout.SuperSwipeRefreshLayout>
+
 </LinearLayout>
