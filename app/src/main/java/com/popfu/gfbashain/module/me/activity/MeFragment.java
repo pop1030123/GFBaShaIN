@@ -6,8 +6,10 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.popfu.gfbashain.R;
+import com.popfu.gfbashain.module.login.DologinActivity_;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.EFragment;
@@ -19,6 +21,11 @@ import org.androidannotations.annotations.ViewById;
 @EFragment
 public class MeFragment extends Fragment {
 
+
+
+    @ViewById(R.id.tv_name)
+    TextView mNameView ;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
@@ -29,6 +36,8 @@ public class MeFragment extends Fragment {
 
     @AfterViews
     public void afterViews(){
+
+        mNameView.setText(DologinActivity_.name);
     }
 
 }

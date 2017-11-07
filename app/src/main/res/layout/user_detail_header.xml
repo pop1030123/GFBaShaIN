@@ -62,7 +62,7 @@
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:layout_marginTop="20.0px"
-            android:text="用户名"
+            android:text="个人描述"
             android:textColor="#ff3b3b48"
             android:textSize="24.0px"/>
     </com.zhy.autolayout.AutoLinearLayout>

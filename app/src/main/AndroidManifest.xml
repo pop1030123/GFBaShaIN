@@ -131,8 +131,8 @@
         <!--<activity android:name="com.metshow.bz.module.in.activArticleFragmentvity" android:screenOrientation="portrait"/>-->
         <!--<activity android:name="com.metshow.bz.module.shai.ProductActivity" android:screenOrientation="portrait"/>-->
         <!--<activity android:name="com.metshow.bz.module.shai.TopicActivity" android:screenOrientation="portrait"/>-->
-        <!--<activity android:name="com.metshow.bz.module.login.DologinActivity" android:screenOrientation="portrait"/>-->
-        <!--<activity android:name="com.metshow.bz.module.login.RegOrForgotActivity" android:screenOrientation="portrait"/>-->
+        <activity android:name="com.popfu.gfbashain.module.login.DologinActivity_" android:screenOrientation="portrait"/>
+        <activity android:name="com.popfu.gfbashain.module.login.RegOrForgotActivity_" android:screenOrientation="portrait"/>
         <!--<activity android:name="com.metshow.bz.module.commons.activity.ImageActivity" android:screenOrientation="portrait"/>-->
         <!--<activity android:name="com.metshow.bz.module.commons.activity.ChatActivity" android:screenOrientation="portrait" android:windowSoftInputMode="adjustResize|stateHidden"/>-->
         <!--<activity android:name="com.yongchun.library.view.ImageSelectorActivity" android:screenOrientation="portrait" android:theme="@style/Theme.AppCompat.NoActionBar"/>-->
@@ -144,7 +144,7 @@
         <!--<activity android:name="com.metshow.bz.module.commons.activity.SendTopicActivity" android:screenOrientation="portrait"/>-->
         <!--<activity android:name="com.metshow.bz.module.commons.activity.TagActivity" android:screenOrientation="portrait"/>-->
         <!--<activity android:name="com.metshow.bz.module.commons.activity.TopicSubjectActivity" android:screenOrientation="portrait"/>-->
-        <!--<activity android:name="com.metshow.bz.module.login.RegFindActivity" android:screenOrientation="portrait"/>-->
+        <activity android:name="com.popfu.gfbashain.module.login.RegFindActivity_" android:screenOrientation="portrait"/>
         <!--<activity android:name="com.metshow.bz.module.commons.activity.WebProductActivity" android:screenOrientation="portrait"/>-->
         <!--<activity android:name="com.metshow.bz.module.commons.activity.BannerTopicActivity" android:screenOrientation="portrait"/>-->
         <!--<activity android:name="com.metshow.bz.module.buy.SpecialActivity" android:screenOrientation="portrait"/>-->

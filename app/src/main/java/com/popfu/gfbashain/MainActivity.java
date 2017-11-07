@@ -1,5 +1,6 @@
 package com.popfu.gfbashain;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -10,6 +11,8 @@ import android.view.animation.DecelerateInterpolator;
 import android.widget.ImageView;
 
 import com.popfu.gfbashain.module.in.activity.ArticlePicGroupFragment_;
+import com.popfu.gfbashain.module.login.DologinActivity;
+import com.popfu.gfbashain.module.login.DologinActivity_;
 import com.popfu.gfbashain.module.me.activity.MeFragment_;
 import com.popfu.gfbashain.module.shai.ShaiFragment_;
 
@@ -132,13 +135,21 @@ public class MainActivity extends FragmentActivity {
 
     @Click(R.id.iv_tab_me)
     public void clickModuleMe(ImageView imageView){
-        int current = mViewPager.getCurrentItem() ;
-        if(Math.abs(3 - current) > 1){
-            mViewPager.setCurrentItem(2,false);
+        // 判断有无登录，没有登录就跳转到登录界面
+        if(DologinActivity.loginTag){
+            int current = mViewPager.getCurrentItem() ;
+            if(Math.abs(3 - current) > 1){
+                mViewPager.setCurrentItem(2,false);
+            }
+            L.d("click3:"+imageView+":current:"+current);
+            mViewPager.setCurrentItem(3,true);
+            updateTabState(imageView) ;
+        }else{
+            DologinActivity_.intent(this)
+//                .extra(KEY_TIME_UNIT ,unit)
+                    .startForResult(REQ_CODE_LOGIN) ;
         }
-        L.d("click3:"+imageView+":current:"+current);
-        mViewPager.setCurrentItem(3,true);
-        updateTabState(imageView) ;
+
     }
 
     private void updateTabState(ImageView clickView){
@@ -168,6 +179,21 @@ public class MainActivity extends FragmentActivity {
         @Override
         public int getCount() {
             return modules.length;
+        }
+    }
+
+    public static final int REQ_CODE_LOGIN = 111 ;
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(resultCode == RESULT_OK){
+            switch (requestCode)
+            {
+                case REQ_CODE_LOGIN:
+                    // 登录成功后，跳转到个人信息界面
+//                    clickModuleMe(tabImages.get(3)) ;
+                    break ;
+            }
         }
     }
 }
