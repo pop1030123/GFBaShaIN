@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.NestedScrollView android:id="@id/activity_setting"
+                                            xmlns:android="http://schemas.android.com/apk/res/android"
+                                            xmlns:app="http://schemas.android.com/apk/res-auto"
+                                            android:layout_width="fill_parent"
+                                            android:layout_height="fill_parent">
+
+    <com.zhy.autolayout.AutoLinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical">
+
+        <com.zhy.autolayout.AutoLinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="95.0px"
+            android:background="@android:color/white"
+            android:orientation="horizontal"
+            android:paddingBottom="30.0px"
+            android:paddingTop="30.0px">
+
+            <TextView
+                android:id="@id/tv_clear_cache"
+                android:layout_width="0.0dip"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.0"
+                android:paddingLeft="56.0px"
+                android:text="清除缓存"
+                android:textColor="#ff3b3b48"
+                android:textSize="26.0px"/>
+
+            <TextView
+                android:id="@id/tv_cache_size"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="30.0px"
+                android:text="0.00M"/>
+        </com.zhy.autolayout.AutoLinearLayout>
+
+        <TextView
+            android:id="@id/tv_appstore"
+            android:layout_width="fill_parent"
+            android:layout_height="95.0px"
+            android:layout_marginTop="20.0px"
+            android:background="@android:color/white"
+            android:paddingBottom="30.0px"
+            android:paddingLeft="56.0px"
+            android:paddingTop="30.0px"
+            android:text="给个好评"
+            android:textColor="#ff3b3b48"
+            android:textSize="26.0px"
+            android:visibility="gone"/>
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1.0px"
+            android:background="@color/divider_color"/>
+
+        <TextView
+            android:id="@id/tv_user_feedback"
+            android:layout_width="fill_parent"
+            android:layout_height="95.0px"
+            android:background="@android:color/white"
+            android:paddingBottom="30.0px"
+            android:paddingLeft="56.0px"
+            android:paddingTop="30.0px"
+            android:text="用户反馈"
+            android:textColor="#ff3b3b48"
+            android:textSize="26.0px"/>
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1.0px"
+            android:background="@color/divider_color"/>
+
+        <TextView
+            android:id="@id/tv_about"
+            android:layout_width="fill_parent"
+            android:layout_height="95.0px"
+            android:background="@android:color/white"
+            android:paddingBottom="30.0px"
+            android:paddingLeft="56.0px"
+            android:paddingTop="30.0px"
+            android:text="关于我们"
+            android:textColor="#ff3b3b48"
+            android:textSize="26.0px"/>
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1.0px"
+            android:background="@color/divider_color"/>
+
+        <TextView
+            android:id="@id/tv_add_contact"
+            android:layout_width="fill_parent"
+            android:layout_height="95.0px"
+            android:background="@android:color/white"
+            android:paddingBottom="30.0px"
+            android:paddingLeft="56.0px"
+            android:paddingTop="30.0px"
+            android:text="导入通讯录"
+            android:textColor="#ff3b3b48"
+            android:textSize="26.0px"
+            android:visibility="gone"/>
+
+        <View
+            android:id="@id/line_add_contact"
+            android:layout_width="fill_parent"
+            android:layout_height="1.0px"
+            android:background="@color/divider_color"/>
+
+        <com.zhy.autolayout.AutoLinearLayout
+            android:id="@id/ll_get_state"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/white"
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="0.0dip"
+                android:layout_height="95.0px"
+                android:layout_weight="1.0"
+                android:paddingBottom="30.0px"
+                android:paddingLeft="56.0px"
+                android:paddingTop="30.0px"
+                android:text="接收动态通知"
+                android:textColor="#ff3b3b48"
+                android:textSize="26.0px"/>
+
+            <com.kyleduo.switchbutton.SwitchButton
+                android:id="@id/sb_state"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingBottom="5.0dip"
+                android:paddingLeft="10.0dip"
+                android:paddingRight="10.0dip"
+                android:paddingTop="5.0dip"
+                app:kswTintColor="@color/redWin"/>
+        </com.zhy.autolayout.AutoLinearLayout>
+
+        <TextView
+            android:id="@id/tv_pass"
+            android:layout_width="fill_parent"
+            android:layout_height="95.0px"
+            android:layout_marginTop="20.0px"
+            android:background="@android:color/white"
+            android:paddingBottom="30.0px"
+            android:paddingLeft="56.0px"
+            android:paddingTop="30.0px"
+            android:text="修改密码"
+            android:textColor="#ff3b3b48"
+            android:textSize="26.0px"/>
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1.0px"
+            android:background="@color/divider_color"/>
+
+        <TextView
+            android:id="@id/tv_logout"
+            android:layout_width="fill_parent"
+            android:layout_height="95.0px"
+            android:background="@android:color/white"
+            android:paddingBottom="30.0px"
+            android:paddingLeft="56.0px"
+            android:paddingTop="30.0px"
+            android:text="退出登录"
+            android:textColor="#ff3b3b48"
+            android:textSize="26.0px"/>
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1.0px"/>
+    </com.zhy.autolayout.AutoLinearLayout>
+</android.support.v4.widget.NestedScrollView>

@@ -12,6 +12,7 @@ import com.popfu.gfbashain.R;
 import com.popfu.gfbashain.module.login.DologinActivity_;
 
 import org.androidannotations.annotations.AfterViews;
+import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EFragment;
 import org.androidannotations.annotations.ViewById;
 
@@ -38,6 +39,13 @@ public class MeFragment extends Fragment {
     public void afterViews(){
 
         mNameView.setText(DologinActivity_.name);
+    }
+
+    @Click(R.id.ll_setting)
+    public void onClickSetting(){
+        SettingActivity_.intent(this)
+//                .extra(KEY_TIME_UNIT ,unit)
+                .start() ;
     }
 
 }

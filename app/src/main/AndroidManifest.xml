@@ -120,7 +120,7 @@
         <!--<activity android:name="com.metshow.bz.module.me.activity.UserInfoEditActivity" android:screenOrientation="portrait"/>-->
         <!--<activity android:name="com.metshow.bz.module.me.activity.FavoriteActivity" android:screenOrientation="portrait"/>-->
         <!--<activity android:name="com.metshow.bz.module.me.activity.PointsNoteActivity" android:screenOrientation="portrait"/>-->
-        <!--<activity android:name="com.metshow.bz.module.me.activity.SettingActivity" android:screenOrientation="portrait"/>-->
+        <activity android:name="com.popfu.gfbashain.module.me.activity.SettingActivity_" android:screenOrientation="portrait"/>
         <!--<activity android:name="com.popfu.gfbashain.module.in.activity.ArticlePicGroupFragment_" android:screenOrientation="portrait"/>-->
         <!--<activity android:name="com.metshow.bz.module.shai.TopicListActivity" android:screenOrientation="portrait"/>-->
         <!--<activity android:name="com.metshow.bz.module.search.ArticleSearchActivity" android:screenOrientation="portrait"/>-->
