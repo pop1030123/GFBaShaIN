@@ -2,24 +2,22 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
 	android:id="@+id/head_container"
 	android:layout_width="match_parent"
-	android:layout_height="60dp" >
+	android:layout_height="60dp"
+    android:padding="5dp">
 
-	<TextView
-		android:id="@+id/footer_text_view"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:layout_centerInParent="true"
-		android:gravity="center"
-		android:padding="10dp"
-		android:text="Loading" />
+    <ImageView
+        android:id="@+id/load_view"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_centerInParent="true"
+        android:contentDescription="@null"
+        android:src="@drawable/load_pull_0"/>
 
 	<pl.droidsonroids.gif.GifImageView
-		android:id="@+id/footer_image_view"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-		android:layout_centerVertical="true"
-		android:layout_toLeftOf="@id/footer_text_view"
-		android:layout_toStartOf="@id/footer_text_view"
+		android:id="@+id/gif_view"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+		android:layout_centerInParent="true"
 		android:contentDescription="@null"
         android:src="@drawable/load"/>
 

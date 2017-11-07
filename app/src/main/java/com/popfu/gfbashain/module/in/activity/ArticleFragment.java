@@ -25,6 +25,8 @@ import org.androidannotations.annotations.ViewById;
 
 import pl.droidsonroids.gif.GifImageView;
 
+import static android.view.View.GONE;
+
 /**
  * Created by pengfu on 04/11/2017.
  */
@@ -101,8 +103,8 @@ public class ArticleFragment extends Fragment {
         swipeRefreshLayout.setOnPullRefreshListener(new SuperSwipeRefreshLayout.OnPullRefreshListener() {
             @Override
             public void onRefresh() {
-                textView.setText("正在刷新");
-//                imageView.setVisibility(View.GONE);
+                headGifView.setVisibility(View.VISIBLE);
+                headLoadView.setVisibility(View.GONE);
                 new Handler().postDelayed(new Runnable() {
 
                     @Override
@@ -119,25 +121,19 @@ public class ArticleFragment extends Fragment {
 
             @Override
             public void onPullEnable(boolean enable) {
-                textView.setText(enable ? "松开刷新" : "下拉刷新");
-                if(enable){
-                    imageView.setFreezesAnimation(true);
-                }
-//                imageView.setVisibility(View.VISIBLE);
-//                imageView.setRotation(enable ? 180 : 0);
+                headGifView.setVisibility(GONE);
+                headLoadView.setVisibility(View.VISIBLE);
+                headLoadView.setImageResource(enable ? R.drawable.load_pull_1: R.drawable.load_pull_0);
             }
         });
         swipeRefreshLayout.setOnPushLoadMoreListener(new SuperSwipeRefreshLayout.OnPushLoadMoreListener() {
             @Override
             public void onLoadMore() {
-
-                footerTextView.setText("正在加载...");
-//                footerImageView.setVisibility(View.GONE);
+                footGifView.setVisibility(View.VISIBLE);
+                footLoadView.setVisibility(GONE);
                 new Handler().postDelayed(new Runnable() {
-
                     @Override
                     public void run() {
-                        footerImageView.setVisibility(View.VISIBLE);
                         swipeRefreshLayout.setLoadMore(false);
                     }
                 }, 2000);
@@ -150,42 +146,35 @@ public class ArticleFragment extends Fragment {
 
             @Override
             public void onPushEnable(boolean enable) {
-                footerTextView.setText(enable ? "松开加载" : "上拉加载");
-                footerImageView.setVisibility(View.VISIBLE);
-//                footerImageView.setRotation(enable ? 0 : 180);
+                footGifView.setVisibility(GONE);
+                footLoadView.setVisibility(View.VISIBLE);
+                footLoadView.setImageResource(enable ? R.drawable.load_pull_1: R.drawable.load_pull_0);
             }
         });
     }
 
 
     // Header View
-    private TextView textView;
-    private GifImageView imageView;
+    private GifImageView headGifView;
+    private ImageView headLoadView;
 
     // Footer View
-    private TextView footerTextView;
-    private GifImageView footerImageView;
+    private GifImageView footGifView;
+    private ImageView footLoadView;
     private View createFooterView() {
         View footerView = LayoutInflater.from(swipeRefreshLayout.getContext())
-                .inflate(R.layout.layout_footer, null);
-        footerImageView = (GifImageView) footerView
-                .findViewById(R.id.footer_image_view);
-        footerTextView = (TextView) footerView
-                .findViewById(R.id.footer_text_view);
-        footerImageView.setVisibility(View.VISIBLE);
-//        footerImageView.setImageResource(R.drawable.down_arrow);
-        footerTextView.setText("上拉加载更多...");
+                .inflate(R.layout.layout_footer, null ,false);
+        footGifView = (GifImageView) footerView
+                .findViewById(R.id.gif_view);
+        footLoadView = footerView.findViewById(R.id.load_view) ;
         return footerView;
     }
 
     private View createHeaderView() {
         View headerView = LayoutInflater.from(swipeRefreshLayout.getContext())
-                .inflate(R.layout.layout_head, null);
-        textView = (TextView) headerView.findViewById(R.id.text_view);
-        textView.setText("下拉刷新");
-        imageView = (GifImageView) headerView.findViewById(R.id.image_view);
-        imageView.setVisibility(View.VISIBLE);
-//        imageView.setImageResource(R.drawable.down_arrow);
+                .inflate(R.layout.layout_head, null ,false);
+        headLoadView = headerView.findViewById(R.id.load_view) ;
+        headGifView = (GifImageView) headerView.findViewById(R.id.gif_view);
         return headerView;
     }
 }
