@@ -94,10 +94,21 @@ public class ArticleActivity extends Activity {
                     mContentBottomOffsetNum = mScrollView.getMeasuredHeight();
                     mSVRootLl.setInitBottom(0);
                     mSVRootLl.setAnimationStatus(true);
-                    mSVRootLl.setLayoutImageView(true);
                     initData = true;
                     startAnimation();
                 }
+            }
+        });
+
+        /**
+         *  下拉拖动时候回调修改root背景色的透明度
+         */
+        mSVRootLl.setOnUpdateBgColorListener(new SVRootLinearLayout.OnUpdateBgColorListener() {
+            @Override
+            public void onUpdate(float ratio) {
+                L.d("onUpdate:"+ratio);
+                imageView.setScaleX(1+ratio);
+                imageView.setScaleY(1+ratio);
             }
         });
 
@@ -136,7 +147,7 @@ public class ArticleActivity extends Activity {
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK && event.getRepeatCount() == 0) { //按下的如果是BACK，同时没有重复
-            if(mSVRootLl != null) mSVRootLl.startAnimation(mContentTopOffsetNum - statusBarHeight, false, 0);
+            if(mSVRootLl != null) mSVRootLl.finishAnimation(mContentTopOffsetNum - statusBarHeight, false, 0);
             return true;
         }
         return super.onKeyDown(keyCode, event);

@@ -26,13 +26,12 @@ public class SVRootLinearLayout extends LinearLayout {
     private LinearLayout mContentLL;
     private ImageView mIconImageView;
     private int mMargin;
-    private boolean mIsAnimation, mIsLayoutImageView;
+    private boolean mIsAnimation;
     private int mInitBottom;
     public int mContentMarginTop, mContentBottomOffset, mTouchMoveOffset;
 
 
     private ScrollView mParentScrollView;
-    private int mTitleViewHeight;
     private int mCenterVisibleViewHeight;
     private int mContentLlHeight, mContentLlWidth, mIconImageViewHeight, mIconImageViewWidth;
 
@@ -85,10 +84,6 @@ public class SVRootLinearLayout extends LinearLayout {
         mIsAnimation = isAnimation;
     }
 
-    public void setLayoutImageView(boolean layoutImageView) {
-        mIsLayoutImageView = layoutImageView;
-    }
-
     @Override
     protected void onFinishInflate() {
         super.onFinishInflate();
@@ -101,11 +96,6 @@ public class SVRootLinearLayout extends LinearLayout {
         super.onLayout(changed, l, t, r, b);
         int contentTop = mContentMarginTop + mTouchMoveOffset;
         mContentLL.layout(0, contentTop, mContentLlWidth, !mIsAnimation ? contentTop + mContentLlHeight : mInitBottom + mContentBottomOffset);
-
-        if(!mIsLayoutImageView) return;
-//        int left = mMargin + mImageLeftOffset;
-//        int top = mMargin + mImageTopOffset;
-//        mIconImageView.layout(left, top, left + mIconImageViewWidth, top + mIconImageViewHeight);
     }
 
     @Override
@@ -120,14 +110,13 @@ public class SVRootLinearLayout extends LinearLayout {
             setMeasuredDimension(getMeasuredWidth(), childNumHeight);
         }
 
-        mTitleViewHeight = getChildAt(0).getMeasuredHeight();
         mContentLlHeight = mContentLL.getMeasuredHeight();
         mContentLlWidth = mContentLL.getMeasuredWidth();
         mIconImageViewHeight = mIconImageView.getMeasuredHeight();
         mIconImageViewWidth = mIconImageView.getMeasuredWidth();
 
         if(mParentScrollView == null) mParentScrollView = (ScrollView) getParent();
-        mCenterVisibleViewHeight = mParentScrollView.getHeight() - mTitleViewHeight;
+        mCenterVisibleViewHeight = mParentScrollView.getHeight();
     }
 
     public void setContentInitMarginTop(int marginTop) {
@@ -146,13 +135,14 @@ public class SVRootLinearLayout extends LinearLayout {
     public void setTouchMoveOffset(float touchMoveOffset) {
         if(touchMoveOffset < 0) touchMoveOffset = 0;
         mTouchMoveOffset = (int) touchMoveOffset;
-        requestLayout();
+//        requestLayout();
         updateBgColor(mTouchMoveOffset);
     }
 
     public void updateBgColor(int offset) {
+        L.d("updateBgColor:offset:"+offset+":v:"+mContentBottomOffset);
         if(mOnUpdateBgColorListener != null) {
-            float ratio = BigDecimalUtils.divide(offset, mCenterVisibleViewHeight);
+            float ratio = BigDecimalUtils.divide(offset, mContentBottomOffset);
             if(ratio > 1) ratio = 1;
             if(ratio < 0) ratio = 0;
             mOnUpdateBgColorListener.onUpdate(ratio);
@@ -190,7 +180,7 @@ public class SVRootLinearLayout extends LinearLayout {
                 mIsDrag = false;
                 boolean isUp = false;
                 int animationMoveOffset;
-                if(mContentLL.getTop() <= mCenterVisibleViewHeight / 2 + mTitleViewHeight) {
+                if(mContentLL.getTop() <= mCenterVisibleViewHeight / 2) {
                     animationMoveOffset = mTouchMoveOffset;
                     isUp = true;
                 } else {
@@ -214,8 +204,35 @@ public class SVRootLinearLayout extends LinearLayout {
                     mTouchMoveOffset = (int) (moveOffset * (1 - ratio));
                 else
                     mTouchMoveOffset = currentMoveOffset + (int) (moveOffset * ratio);
-                requestLayout();
+//                requestLayout();
                 updateBgColor(mTouchMoveOffset);
+            }
+        });
+
+        valueAnimator.addListener(new AnimatorListenerAdapter() {
+            @Override
+            public void onAnimationEnd(Animator animation) {
+                super.onAnimationEnd(animation);
+                if(!isUp && mOnCloseListener != null) mOnCloseListener.onClose();
+            }
+        });
+        valueAnimator.start();
+    }
+
+    public void finishAnimation(final int moveOffset, final boolean isUp, final int currentMoveOffset) {
+        int duration = moveOffset / mTouchSlop * 10;
+        if(duration <= 0) duration = 300;
+        ValueAnimator valueAnimator = ValueAnimator.ofFloat(0, 1).setDuration(duration);
+        valueAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+            @Override
+            public void onAnimationUpdate(ValueAnimator animation) {
+                float ratio = (float) animation.getAnimatedValue();
+                if(isUp)
+                    mTouchMoveOffset = (int) (moveOffset * (1 - ratio));
+                else
+                    mTouchMoveOffset = currentMoveOffset + (int) (moveOffset * ratio);
+                requestLayout();
+//                updateBgColor(mTouchMoveOffset);
             }
         });
 
