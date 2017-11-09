@@ -177,4 +177,9 @@
     <dimen name="title_bar_height">93.0px</dimen>
     <dimen name="umeng_socialize_pad_window_height">350.0dip</dimen>
     <dimen name="umeng_socialize_pad_window_width">580.0dip</dimen>
+
+    <dimen name="icon_margin">15dp</dimen>
+    <dimen name="view_height">110dp</dimen>
+    <dimen name="bar_view_height">100dp</dimen>
+    <dimen name="title_view_height">40dp</dimen>
 </resources>

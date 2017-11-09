@@ -460,7 +460,7 @@
     <attr name="initialFrameScale" format="float" />
     <attr name="bottomSheetDialogTheme" format="reference" />
     <attr name="bottomSheetStyle" format="reference" />
-    <attr name="textColorError" format="color" />
+    <!--<attr name="textColorError" format="color" />-->
     <attr name="color" format="color" />
     <attr name="spinBars" format="boolean" />
     <attr name="drawableSize" format="dimension" />

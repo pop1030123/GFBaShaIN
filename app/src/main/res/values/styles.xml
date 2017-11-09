@@ -1631,4 +1631,11 @@
     <style name="CustomTabPageIndicator.Text" parent="android:TextAppearance.Medium">
         <item name="android:typeface">monospace</item>
     </style>
+
+
+    <style name="transparent" parent="Theme.AppCompat.Light.NoActionBar">
+        　　<item name="android:windowBackground">@android:color/transparent</item>
+        　　<item name="android:windowIsTranslucent">true</item>
+            <item name="android:windowFullscreen">true</item>
+    </style>
 </resources>

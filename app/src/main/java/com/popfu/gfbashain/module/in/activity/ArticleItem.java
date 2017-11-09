@@ -1,10 +1,12 @@
 package com.popfu.gfbashain.module.in.activity;
 
+import java.io.Serializable;
+
 /**
  * Created by pengfu on 04/11/2017.
  */
 
-public class ArticleItem {
+public class ArticleItem implements Serializable {
 
 
     public ArticleItem(String title, int picRes) {

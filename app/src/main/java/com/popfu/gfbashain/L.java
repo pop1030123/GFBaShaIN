@@ -10,7 +10,7 @@ import java.sql.SQLException;
 
 public final class L {
 
-    private static final String TAG ="GFBASHAIN" ;
+    private static final String TAG ="poplog" ;
 
     public static void d(String message){
         Log.d(TAG ,message) ;

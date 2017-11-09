@@ -1,6 +1,7 @@
 package com.popfu.gfbashain.module.in.activity;
 
 import android.content.Context;
+import android.graphics.Rect;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
@@ -14,6 +15,7 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.popfu.gfbashain.L;
 import com.popfu.gfbashain.R;
 import com.popfu.gfbashain.module.in.presenter.ArticlePresenter;
@@ -95,6 +97,29 @@ public class ArticleFragment extends Fragment {
     public void afterViews() {
         adapter = new ArticleAdapter(R.layout.item_article_picgroup, presenter.getData());
 
+        adapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
+                int[] location = new int[2];
+                view.getLocationOnScreen(location);
+                int x = location[0];
+                int y = location[1];
+//                Rect rect = new Rect() ;
+//                view.getGlobalVisibleRect(rect);
+//                int[] location2 = new int[2];
+//                view.getLocationInWindow(location2);
+//                int y2 = location2[1];
+                Rect rectangle= new Rect();
+                getActivity().getWindow().getDecorView().getWindowVisibleDisplayFrame(rectangle);
+                L.d("view y:"+y+":sH:"+rectangle.top);
+                ArticleActivity_.intent(getContext())
+                        .extra("data" ,((ArticleAdapter)adapter).getItem(position))
+                        .extra("top" ,y)
+                        .extra("statusBarHeight" ,rectangle.top)
+                        .start()
+                        .withAnimation(0,0); ;
+            }
+        });
         mArticleRecyclerView.setAdapter(adapter);
         mArticleRecyclerView.setLayoutManager(new LinearLayoutManager(mContext));
 
