@@ -70,7 +70,8 @@ public class DologinActivity extends Activity {
 
     @Click(R.id.tv_reg)
     public void onClickReg(){
-
+        RegOrForgotActivity_.intent(this)
+                .start() ;
     }
 
     @Click(R.id.iv_title_close)

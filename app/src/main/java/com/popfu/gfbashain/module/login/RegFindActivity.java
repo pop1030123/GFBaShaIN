@@ -4,6 +4,7 @@ import android.app.Activity;
 
 import com.popfu.gfbashain.R;
 
+import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EActivity;
 
 /**
@@ -11,4 +12,12 @@ import org.androidannotations.annotations.EActivity;
  */
 @EActivity(R.layout.activity_reg)
 public class RegFindActivity extends Activity {
+
+
+
+
+    @Click(R.id.iv_title_back)
+    public void onClickBack(){
+        finish();
+    }
 }
