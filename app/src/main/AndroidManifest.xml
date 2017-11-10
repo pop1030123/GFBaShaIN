@@ -120,10 +120,13 @@
         <!--<activity android:name="com.metshow.bz.module.me.activity.UserInfoEditActivity" android:screenOrientation="portrait"/>-->
         <!--<activity android:name="com.metshow.bz.module.me.activity.FavoriteActivity" android:screenOrientation="portrait"/>-->
         <!--<activity android:name="com.metshow.bz.module.me.activity.PointsNoteActivity" android:screenOrientation="portrait"/>-->
-        <activity android:name="com.popfu.gfbashain.module.me.activity.SettingActivity_" android:screenOrientation="portrait"/>
-        <activity android:name="com.popfu.gfbashain.module.in.activity.ArticleActivity_"
-                  android:theme="@style/transparent"
-                  android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.popfu.gfbashain.module.me.activity.SettingActivity_"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.popfu.gfbashain.module.in.activity.ArticleActivity_"
+            android:screenOrientation="portrait"
+            android:theme="@style/transparent"/>
         <!--<activity android:name="com.popfu.gfbashain.module.in.activity.ArticlePicGroupFragment_" android:screenOrientation="portrait"/>-->
         <!--<activity android:name="com.metshow.bz.module.shai.TopicListActivity" android:screenOrientation="portrait"/>-->
         <!--<activity android:name="com.metshow.bz.module.search.ArticleSearchActivity" android:screenOrientation="portrait"/>-->
@@ -134,8 +137,12 @@
         <!--<activity android:name="com.metshow.bz.module.in.activArticleFragmentvity" android:screenOrientation="portrait"/>-->
         <!--<activity android:name="com.metshow.bz.module.shai.ProductActivity" android:screenOrientation="portrait"/>-->
         <!--<activity android:name="com.metshow.bz.module.shai.TopicActivity" android:screenOrientation="portrait"/>-->
-        <activity android:name="com.popfu.gfbashain.module.login.DologinActivity_" android:screenOrientation="portrait"/>
-        <activity android:name="com.popfu.gfbashain.module.login.RegOrForgotActivity_" android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.popfu.gfbashain.module.login.DologinActivity_"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.popfu.gfbashain.module.login.RegOrForgotActivity_"
+            android:screenOrientation="portrait"/>
         <!--<activity android:name="com.metshow.bz.module.commons.activity.ImageActivity" android:screenOrientation="portrait"/>-->
         <!--<activity android:name="com.metshow.bz.module.commons.activity.ChatActivity" android:screenOrientation="portrait" android:windowSoftInputMode="adjustResize|stateHidden"/>-->
         <!--<activity android:name="com.yongchun.library.view.ImageSelectorActivity" android:screenOrientation="portrait" android:theme="@style/Theme.AppCompat.NoActionBar"/>-->
@@ -147,7 +154,12 @@
         <!--<activity android:name="com.metshow.bz.module.commons.activity.SendTopicActivity" android:screenOrientation="portrait"/>-->
         <!--<activity android:name="com.metshow.bz.module.commons.activity.TagActivity" android:screenOrientation="portrait"/>-->
         <!--<activity android:name="com.metshow.bz.module.commons.activity.TopicSubjectActivity" android:screenOrientation="portrait"/>-->
-        <activity android:name="com.popfu.gfbashain.module.login.RegFindActivity_" android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.popfu.gfbashain.module.login.RegFindActivity_"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.popfu.gfbashain.module.buy.activity.BuyDetailActivity_"
+            android:screenOrientation="portrait"/>
         <!--<activity android:name="com.metshow.bz.module.commons.activity.WebProductActivity" android:screenOrientation="portrait"/>-->
         <!--<activity android:name="com.metshow.bz.module.commons.activity.BannerTopicActivity" android:screenOrientation="portrait"/>-->
         <!--<activity android:name="com.metshow.bz.module.buy.SpecialActivity" android:screenOrientation="portrait"/>-->
@@ -167,8 +179,9 @@
         <!--<activity android:name="com.metshow.bz.module.me.activity.MotifPwdActivity"/>-->
         <!--<activity android:name="com.metshow.bz.module.me.activity.TagTopicListActivity"/>-->
         <!--<activity android:name="com.metshow.bz.module.commons.activity.PhotoEditActivity"/>-->
+
         <meta-data
-            android:name="com.kwan.base.util.GlideConfiguration"
+            android:name="com.popfu.gfbashain.GlideConfiguration"
             android:value="GlideModule"/>
         <meta-data
             android:name="design_width"

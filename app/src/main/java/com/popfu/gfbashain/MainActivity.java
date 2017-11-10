@@ -10,6 +10,7 @@ import android.support.v4.view.ViewPager;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.ImageView;
 
+import com.popfu.gfbashain.module.buy.activity.BuyFragment_;
 import com.popfu.gfbashain.module.in.activity.ArticlePicGroupFragment_;
 import com.popfu.gfbashain.module.login.DologinActivity;
 import com.popfu.gfbashain.module.login.DologinActivity_;
@@ -38,7 +39,7 @@ public class MainActivity extends FragmentActivity {
 
     ArticlePicGroupFragment_ moduleInFragment;
     ShaiFragment_ moduleShaiFragment;
-    ArticlePicGroupFragment_ moduleBuyFragment;
+    BuyFragment_ moduleBuyFragment;
     MeFragment_ moduleMeFragment;
 
     Fragment[] modules ;
@@ -53,7 +54,7 @@ public class MainActivity extends FragmentActivity {
 
         moduleInFragment = new ArticlePicGroupFragment_() ;
         moduleShaiFragment = new ShaiFragment_() ;
-        moduleBuyFragment = new ArticlePicGroupFragment_() ;
+        moduleBuyFragment = new BuyFragment_() ;
         moduleMeFragment = new MeFragment_() ;
         modules = new Fragment[]{moduleInFragment ,moduleShaiFragment ,moduleBuyFragment ,moduleMeFragment} ;
 
