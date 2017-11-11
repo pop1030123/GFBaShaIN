@@ -54,7 +54,7 @@ import android.widget.ScrollView;
  */
 @SuppressLint("ClickableViewAccessibility")
 public class SuperSwipeRefreshLayout extends ViewGroup {
-    private static final String LOG_TAG = "CustomeSwipeRefreshLayout";
+    private static final String LOG_TAG = "SuperSwipeRefreshLayout";
     private static final int HEADER_VIEW_HEIGHT = 50;// HeaderView height (dp)
 
     private static final float DECELERATE_INTERPOLATION_FACTOR = 2f;
@@ -480,7 +480,7 @@ public class SuperSwipeRefreshLayout extends ViewGroup {
         final int childTop = getPaddingTop() + distance - pushDistance;// 根据偏移量distance更新
         final int childWidth = width - getPaddingLeft() - getPaddingRight();
         final int childHeight = height - getPaddingTop() - getPaddingBottom();
-        Log.d(LOG_TAG, "debug:onLayout childHeight = " + childHeight);
+//        Log.d(LOG_TAG, "debug:onLayout childHeight = " + childHeight);
         child.layout(childLeft, childTop, childLeft + childWidth, childTop
                 + childHeight);// 更新目标View的位置
         int headViewWidth = mHeadViewContainer.getMeasuredWidth();

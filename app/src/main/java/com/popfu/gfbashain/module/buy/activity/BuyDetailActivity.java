@@ -20,37 +20,37 @@ import org.androidannotations.annotations.ViewById;
 public class BuyDetailActivity extends Activity {
 
 
-//    @ViewById(R.id.video)
-//    VideoView videoView ;
+    @ViewById(R.id.video)
+    VideoView videoView ;
 
     @AfterViews
     public void afterViews(){
 
-//        MediaController  mMediaController = new MediaController(this);
-//        videoView.setMediaController(mMediaController);
-//        loadView("http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4");
+        MediaController  mMediaController = new MediaController(this);
+        videoView.setMediaController(mMediaController);
+        loadView("blob:https://v.qq.com/0d6ce07b-85fb-48d7-b777-eff8e4ef283a");
     }
 
 
     public void loadView(String path) {
-//        Uri uri = Uri.parse(path);
-//        videoView.setVideoURI(uri);
-//        videoView.start();
-//
-//        videoView.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
-//            @Override
-//            public void onPrepared(MediaPlayer mp) {
-//                mp.start();// 播放
-//                Toast.makeText(BuyDetailActivity.this, "开始播放！", Toast.LENGTH_LONG).show();
-//            }
-//        });
-//
-//        videoView.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-//            @Override
-//            public void onCompletion(MediaPlayer mp) {
-//                Toast.makeText(BuyDetailActivity.this, "播放完毕", Toast.LENGTH_SHORT).show();
-//            }
-//        });
+        Uri uri = Uri.parse(path);
+        videoView.setVideoURI(uri);
+        videoView.start();
+
+        videoView.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+            @Override
+            public void onPrepared(MediaPlayer mp) {
+                mp.start();// 播放
+                Toast.makeText(BuyDetailActivity.this, "开始播放！", Toast.LENGTH_LONG).show();
+            }
+        });
+
+        videoView.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+            @Override
+            public void onCompletion(MediaPlayer mp) {
+                Toast.makeText(BuyDetailActivity.this, "播放完毕", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
 }

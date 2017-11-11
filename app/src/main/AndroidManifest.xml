@@ -181,9 +181,6 @@
         <!--<activity android:name="com.metshow.bz.module.commons.activity.PhotoEditActivity"/>-->
 
         <meta-data
-            android:name="com.popfu.gfbashain.GlideConfiguration"
-            android:value="GlideModule"/>
-        <meta-data
             android:name="design_width"
             android:value="750"/>
         <meta-data
