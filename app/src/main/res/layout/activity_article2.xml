@@ -18,8 +18,11 @@
         android:fadingEdge="vertical"
         android:requiresFadingEdge="vertical"
         android:scrollbarFadeDuration="0"
+        android:background="@color/white"
+        android:scrollbars="none"
         >
         <LinearLayout
+            android:id="@+id/container"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
@@ -36,15 +39,27 @@
                     android:scaleType="centerCrop"
                     tools:ignore="ContentDescription"/>
             </RelativeLayout>
-            <TextView
-                android:id="@+id/tv1"
+
+            <LinearLayout
+                android:id="@+id/content"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:clickable="false"
-                android:focusableInTouchMode="false"
-                android:focusable="false"
-                android:text="@string/demo_content"
-                />
+                android:layout_height="match_parent"
+                android:background="@color/white"
+                android:orientation="vertical"
+                >
+                <TextView
+                    android:id="@+id/tv_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="5dp"
+                    android:textSize="16sp"
+                    android:textColor="@color/button_material_dark"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="@string/demo_content"/>
+            </LinearLayout>
         </LinearLayout>
     </com.popfu.gfbashain.widget.PullZoomScrollView>
 </RelativeLayout>

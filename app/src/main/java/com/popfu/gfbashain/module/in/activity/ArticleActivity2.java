@@ -32,22 +32,24 @@ public class ArticleActivity2 extends Activity {
 
 
     @ViewById(R.id.scrollview)
-    PullZoomScrollView mView;
+    PullZoomScrollView mScrollView;
 
     @ViewById(R.id.topimagecontainer)
     RelativeLayout mImageContainer;
 
     @ViewById(R.id.topimage)
     ImageView mImage ;
+    @ViewById(R.id.tv_title)
+    TextView mTitleView ;
 
     private int mContentTopOffsetNum;
-
+    private int mContentBottomOffsetNum;
 
     private int statusBarHeight ;
     private boolean initData;
 
     //根布局的背景色
-    private ColorDrawable mRootCDrawable;
+    private ColorDrawable mScrollDrawable;
     private int mColorInitAlpha = 0;
     @AfterViews
     public void afterViews(){
@@ -55,18 +57,52 @@ public class ArticleActivity2 extends Activity {
         int top = bundle.getInt("top") ;
         statusBarHeight = bundle.getInt("statusBarHeight") ;
         ArticleItem data =(ArticleItem) getIntent().getExtras().getSerializable("data") ;
-//        titleView.setText(data.getTitle());
+        mTitleView.setText(data.getTitle());
         mImage.setImageResource(data.getPicRes());
-        mView.mImageView = mImageContainer;
+        mScrollView.mImageView = mImageContainer;
         mContentTopOffsetNum = top;
 
-//        Drawable contentDrawable = mContent.getBackground();
-//        mRootCDrawable = (ColorDrawable) contentDrawable;
-//        mRootCDrawable.setAlpha(mColorInitAlpha);
+        Drawable contentDrawable = mScrollView.getBackground();
+        mScrollDrawable = (ColorDrawable) contentDrawable;
+        mScrollDrawable.setAlpha(mColorInitAlpha);
 
-
+        mScrollView.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+            @Override
+            public void onGlobalLayout() {
+                if(!initData) {
+                    mContentBottomOffsetNum = mScrollView.getMeasuredHeight();
+                    mScrollView.setAnimationStatus(true);
+                    initData = true;
+                    startAnimation();
+                }
+            }
+        });
     }
 
+    private void startAnimation() {
+        ValueAnimator valueAnimator = ValueAnimator.ofFloat(0, 1).setDuration(300);
+        valueAnimator.setStartDelay(0);
+        valueAnimator.start();
+        valueAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+            @Override
+            public void onAnimationUpdate(ValueAnimator animation) {
+                float ratio = (float) animation.getAnimatedValue();
+                //内容布局顶部偏移量
+                int contentTopOffset = (int) (ratio * mContentTopOffsetNum);
+                mScrollDrawable.setAlpha((int)(ratio*255));
+                //内容布局底部偏移量
+                mScrollView.setAllViewOffset(mContentTopOffsetNum - contentTopOffset, mContentBottomOffsetNum);
+            }
+        });
+
+        valueAnimator.addListener(new AnimatorListenerAdapter() {
+            @Override
+            public void onAnimationEnd(Animator animation) {
+                super.onAnimationEnd(animation);
+                mScrollView.setAnimationStatus(false);
+            }
+        });
+    }
 
 
     @Override

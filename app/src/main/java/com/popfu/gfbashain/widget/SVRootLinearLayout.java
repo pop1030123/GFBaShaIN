@@ -95,7 +95,7 @@ public class SVRootLinearLayout extends LinearLayout {
     protected void onLayout(boolean changed, int l, int t, int r, int b) {
         super.onLayout(changed, l, t, r, b);
         int contentTop = mContentMarginTop + mTouchMoveOffset;
-        mContentLL.layout(0, contentTop, mContentLlWidth, !mIsAnimation ? contentTop + mContentLlHeight : mInitBottom + mContentBottomOffset);
+        mContentLL.layout(0, contentTop, mContentLlWidth, mIsAnimation ? mInitBottom + mContentBottomOffset:contentTop + mContentLlHeight);
     }
 
     @Override

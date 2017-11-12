@@ -8,6 +8,8 @@ import android.view.View;
 import android.view.ViewConfiguration;
 import android.view.animation.Animation;
 import android.view.animation.Transformation;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 
@@ -32,6 +34,12 @@ public class PullZoomScrollView extends ScrollView {
     private static final int INVALID_POINTER = -1;
     // 滑动距离及坐标
     private float xDistance, yDistance, xLast, yLast;
+
+    public int mContainerHeight ,mContentMarginTop,mContentBottomOffset;
+
+    private boolean mIsAnimation;
+
+    private LinearLayout mContainerView;
 
     private boolean mIsIntercept = false;
 
@@ -75,10 +83,34 @@ public class PullZoomScrollView extends ScrollView {
         void onTouchEvent(MotionEvent ev);
     }
 
+    public void setAnimationStatus(boolean isAnimation) {
+        mIsAnimation = isAnimation;
+    }
+
+    public void setAllViewOffset(int contentMarginTop, int contentBottomOffset) {
+        mContentMarginTop = contentMarginTop;
+        mContentBottomOffset = contentBottomOffset;
+        requestLayout();
+    }
+
+    @Override
+    protected void onFinishInflate() {
+        super.onFinishInflate();
+        mContainerView = (LinearLayout) findViewById(R.id.container);
+    }
+
+    @Override
+    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+
+        mContainerHeight = mContainerView.getMeasuredHeight();
+    }
+
     @Override
     protected void onLayout(boolean changed, int l, int t, int r, int b) {
         super.onLayout(changed, l, t, r, b);
         initViewsBounds(mZoomRatio);
+        mContainerView.layout(0, mContentMarginTop, r, mIsAnimation ? mContentBottomOffset:mContainerHeight + mContentMarginTop);
     }
     @Override
     public boolean onTouchEvent(MotionEvent event) {
