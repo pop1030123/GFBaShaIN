@@ -10,15 +10,12 @@ import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.ViewTreeObserver;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.popfu.gfbashain.L;
 import com.popfu.gfbashain.R;
-import com.popfu.gfbashain.widget.DetailScrollView;
 import com.popfu.gfbashain.widget.PullZoomScrollView;
-import com.popfu.gfbashain.widget.SVRootLinearLayout;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.EActivity;
@@ -77,10 +74,34 @@ public class ArticleActivity2 extends Activity {
                 }
             }
         });
+
+        /**
+         *  activity 关闭回调
+         */
+        mScrollView.setOnCloseListener(new PullZoomScrollView.OnCloseListener() {
+            @Override
+            public void onClose() {
+                finish();
+                overridePendingTransition(0, 0);
+            }
+        });
+
+
+        /**
+         *  下拉拖动时候回调修改root背景色的透明度
+         */
+        mScrollView.setOnUpdateBgColorListener(new PullZoomScrollView.OnUpdateRatioListener() {
+            @Override
+            public void onUpdate(float ratio) {
+                L.d("onUpdate:"+ratio);
+                float alpha = (1-ratio)*155 ;
+                mScrollDrawable.setAlpha((int)(alpha));
+            }
+        });
     }
 
     private void startAnimation() {
-        ValueAnimator valueAnimator = ValueAnimator.ofFloat(0, 1).setDuration(300);
+        ValueAnimator valueAnimator = ValueAnimator.ofFloat(0, 1).setDuration(200);
         valueAnimator.setStartDelay(0);
         valueAnimator.start();
         valueAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
@@ -104,13 +125,12 @@ public class ArticleActivity2 extends Activity {
         });
     }
 
-
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
-//        if (keyCode == KeyEvent.KEYCODE_BACK && event.getRepeatCount() == 0) { //按下的如果是BACK，同时没有重复
-//            if(mSVRootLl != null) mSVRootLl.finishAnimation(mContentTopOffsetNum - statusBarHeight, false, 0);
-//            return true;
-//        }
+        if (keyCode == KeyEvent.KEYCODE_BACK && event.getRepeatCount() == 0) { //按下的如果是BACK，同时没有重复
+            if(mScrollView != null) mScrollView.finishAnimation(mContentTopOffsetNum - statusBarHeight, false, 0);
+            return true;
+        }
         return super.onKeyDown(keyCode, event);
     }
 }

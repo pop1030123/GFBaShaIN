@@ -1,5 +1,8 @@
 package com.popfu.gfbashain.widget;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.animation.ValueAnimator;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.util.Log;
@@ -8,13 +11,13 @@ import android.view.View;
 import android.view.ViewConfiguration;
 import android.view.animation.Animation;
 import android.view.animation.Transformation;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 
+import com.popfu.gfbashain.L;
 import com.popfu.gfbashain.R;
-import com.popfu.gfbashain.util.SizeUtil;
+import com.popfu.gfbashain.util.BigDecimalUtils;
 
 /**
  * @author 高腾
@@ -34,8 +37,11 @@ public class PullZoomScrollView extends ScrollView {
     private static final int INVALID_POINTER = -1;
     // 滑动距离及坐标
     private float xDistance, yDistance, xLast, yLast;
+    private OnCloseListener mOnCloseListener;
 
-    public int mContainerHeight ,mContentMarginTop,mContentBottomOffset;
+    private OnUpdateRatioListener mOnUpdateRatioListener;
+
+    public int mContainerHeight,mTouchMoveOffset ,mContentMarginTop,mContentBottomOffset;
 
     private boolean mIsAnimation;
 
@@ -79,6 +85,14 @@ public class PullZoomScrollView extends ScrollView {
                              int maxOverScrollX, int maxOverScrollY, boolean isTouchEvent);
     }
 
+    public void setOnCloseListener(OnCloseListener onCloseListener) {
+        mOnCloseListener = onCloseListener;
+    }
+
+    public void setOnUpdateBgColorListener(OnUpdateRatioListener onUpdateRatioListener) {
+        mOnUpdateRatioListener = onUpdateRatioListener;
+    }
+
     private interface OnTouchEventListener {
         void onTouchEvent(MotionEvent ev);
     }
@@ -110,13 +124,66 @@ public class PullZoomScrollView extends ScrollView {
     protected void onLayout(boolean changed, int l, int t, int r, int b) {
         super.onLayout(changed, l, t, r, b);
         initViewsBounds(mZoomRatio);
-        mContainerView.layout(0, mContentMarginTop, r, mIsAnimation ? mContentBottomOffset:mContainerHeight + mContentMarginTop);
+        int top = mContentMarginTop + mTouchMoveOffset;
+        mContainerView.layout(0, top, r, mIsAnimation ? mContentBottomOffset:mContainerHeight + top);
     }
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         Log.e("scrollview",event.getAction()+"");
         touchListener.onTouchEvent(event);
         return super.onTouchEvent(event);
+    }
+
+
+    public void finishAnimation(final int moveOffset, final boolean isUp, final int currentMoveOffset) {
+//        int duration = (int)( moveOffset / mTouchSlop * 10);
+//        if(duration <= 0) duration = 300;
+        ValueAnimator valueAnimator = ValueAnimator.ofFloat(0, 1).setDuration(200);
+        valueAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+            @Override
+            public void onAnimationUpdate(ValueAnimator animation) {
+                float ratio = (float) animation.getAnimatedValue();
+                if(isUp)
+                    mTouchMoveOffset = (int) (moveOffset * (1 - ratio));
+                else
+                    mTouchMoveOffset = currentMoveOffset + (int) (moveOffset * ratio);
+                requestLayout();
+                updateRatio(moveOffset ,mTouchMoveOffset);
+            }
+        });
+
+        valueAnimator.addListener(new AnimatorListenerAdapter() {
+            @Override
+            public void onAnimationEnd(Animator animation) {
+                super.onAnimationEnd(animation);
+                if(!isUp && mOnCloseListener != null) mOnCloseListener.onClose();
+            }
+        });
+        valueAnimator.start();
+    }
+
+    public interface OnCloseListener {
+        void onClose();
+    }
+
+    public interface OnUpdateRatioListener {
+        void onUpdate(float ratio);
+    }
+
+    public void updateRatio(int moveOffset, int offset) {
+        L.d("updateRatio:offset:"+offset+":v:"+mContentBottomOffset+":moveOffset:"+moveOffset);
+        if(mOnUpdateRatioListener != null) {
+            float ratio = offset/(1.0f*moveOffset) ;
+            if(ratio > 1) ratio = 1;
+            if(ratio < 0) ratio = 0;
+            mOnUpdateRatioListener.onUpdate(ratio);
+        }
+//        if(mOnUpdateRatioListener != null) {
+//            float ratio = BigDecimalUtils.divide(offset, mContentBottomOffset);
+//            if(ratio > 1) ratio = 1;
+//            if(ratio < 0) ratio = 0;
+//            mOnUpdateRatioListener.onUpdate(ratio);
+//        }
     }
 
 //    @Override
@@ -222,6 +289,7 @@ public class PullZoomScrollView extends ScrollView {
             mImageView.requestLayout();
         }
     }
+
     private void initViewsBounds(double zoomRatio) {
         if (mImageViewHeight == -1) {
             mImageViewHeight = mImageView.getHeight();
