@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    android:background="@color/white"
+    tools:showIn="@layout/activity_main">
+
+    <com.popfu.gfbashain.widget.PullZoomScrollView
+        android:id="@+id/scrollview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fadeScrollbars="false"
+        android:fadingEdgeLength="0dp"
+        android:fadingEdge="vertical"
+        android:requiresFadingEdge="vertical"
+        android:scrollbarFadeDuration="0"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            >
+            <RelativeLayout
+                android:id="@+id/topimagecontainer"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/image_in_size">
+                <ImageView
+                    android:id="@+id/topimage"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@mipmap/ic_launcher"
+                    android:scaleType="centerCrop"
+                    tools:ignore="ContentDescription"/>
+            </RelativeLayout>
+            <TextView
+                android:id="@+id/tv1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clickable="false"
+                android:focusableInTouchMode="false"
+                android:focusable="false"
+                android:text="@string/demo_content"
+                />
+        </LinearLayout>
+    </com.popfu.gfbashain.widget.PullZoomScrollView>
+</RelativeLayout>

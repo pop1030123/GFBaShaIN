@@ -127,6 +127,10 @@
             android:name="com.popfu.gfbashain.module.in.activity.ArticleActivity_"
             android:screenOrientation="portrait"
             android:theme="@style/transparent"/>
+        <activity
+            android:name="com.popfu.gfbashain.module.in.activity.ArticleActivity2_"
+            android:screenOrientation="portrait"
+            android:theme="@style/transparent"/>
         <!--<activity android:name="com.popfu.gfbashain.module.in.activity.ArticlePicGroupFragment_" android:screenOrientation="portrait"/>-->
         <!--<activity android:name="com.metshow.bz.module.shai.TopicListActivity" android:screenOrientation="portrait"/>-->
         <!--<activity android:name="com.metshow.bz.module.search.ArticleSearchActivity" android:screenOrientation="portrait"/>-->

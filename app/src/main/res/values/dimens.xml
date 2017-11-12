@@ -183,4 +183,5 @@
     <dimen name="bar_view_height">100dp</dimen>
     <dimen name="title_view_height">40dp</dimen>
     <dimen name="video_oper_icon">20dp</dimen>
+    <dimen name="image_in_size">220dp</dimen>
 </resources>

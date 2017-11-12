@@ -112,7 +112,7 @@ public class ArticleFragment extends Fragment {
                 Rect rectangle= new Rect();
                 getActivity().getWindow().getDecorView().getWindowVisibleDisplayFrame(rectangle);
                 L.d("view y:"+y+":sH:"+rectangle.top);
-                ArticleActivity_.intent(getContext())
+                ArticleActivity2_.intent(getContext())
                         .extra("data" ,((ArticleAdapter)adapter).getItem(position))
                         .extra("top" ,y)
                         .extra("statusBarHeight" ,rectangle.top)
